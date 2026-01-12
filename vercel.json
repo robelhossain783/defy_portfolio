@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "defy_portfolio/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "defy_portfolio/wsgi.py"
+    }
+  ]
+}

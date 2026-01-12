@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#fff7f1;
+      color:#1f2937;
+    }
+
+    /* ---------- Navbar ---------- */
+    header{
+      width:100%;
+      padding:20px 80px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#ffffff;
+    }
+
+    header h2{
+      font-weight:700;
+    }
+
+    nav a{
+      margin:0 15px;
+      text-decoration:none;
+      color:#374151;
+      font-weight:500;
+    }
+
+    .btn{
+      background:#f97316;
+      color:white;
+      padding:10px 22px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:500;
+    }
+
+    /* ---------- Hero Section ---------- */
+    .hero{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:80px;
+    }
+
+    .hero-text{
+      max-width:550px;
+    }
+
+    .hero-text h1{
+      font-size:48px;
+      line-height:1.2;
+    }
+
+    .hero-text span{
+      color:#f97316;
+    }
+
+    .hero-text p{
+      margin:20px 0;
+      color:#6b7280;
+    }
+
+<!--    .hero-img img{-->
+<!--      width:350px;-->
+<!--      background-color: white;-->
+<!--    }-->
+
+
+  .hero-img img {
+      width: 350px;
+      height: auto;
+      border-radius: 15px;
+      display: block;
+  }
+
+
+
+    /* ---------- Services Section ---------- */
+    .services{
+      display:flex;
+      justify-content:space-between;
+      padding:80px;
+      gap:50px;
+    }
+
+    .service-box{
+      background:white;
+      padding:25px;
+      border-radius:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+      margin-bottom:20px;
+    }
+
+    .service-box h3{
+      margin-bottom:10px;
+      color:#111827;
+    }
+
+    .service-box p{
+      font-size:14px;
+      color:#6b7280;
+    }
+
+    .service-title h2{
+      font-size:36px;
+      margin-bottom:20px;
+    }
+
+    .service-title span{
+      color:#f97316;
+    }
+    /* ---------- Footer ---------- */
+    .footer{
+    text-align:center;
+    padding:25px 10px;
+    background:var(--card);
+    color:var(--muted);
+    margin-top:60px;
+    font-size:14px;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media(max-width:900px){
+      .hero, .services{
+        flex-direction:column;
+        text-align:center;
+      }
+      header{
+        padding:20px 40px;
+      }
+    }
+
+
+    /* ---------- Theme Variables ---------- */
+    :root{
+      --bg:#fff7f1;
+      --text:#1f2937;
+      --card:#ffffff;
+      --muted:#6b7280;
+    }
+
+    body.dark{
+      --bg:#0f172a;
+      --text:#e5e7eb;
+      --card:#1e293b;
+      --muted:#9ca3af;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      transition:all .3s ease;
+    }
+
+    header{
+      background:var(--card);
+    }
+
+    .service-box{
+      background:var(--card);
+    }
+
+    .hero-text p, .service-box p{
+      color:var(--muted);
+    }
+
+    .theme-toggle{
+      cursor:pointer;
+      border:none;
+      background:#f97316;
+      color:white;
+      padding:8px 14px;
+      border-radius:8px;
+      margin-left:15px;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <h2>Mrstudio</h2>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a class="btn" href="#">Contact Us</a>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  </nav>
+</header>
+
+<!-- Hero -->
+{% load static %}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Hy! I Am <br><span>Robel Hossain</span></h1>
+    <p>Experienced Software Engineer working with backend systems, microservices architecture, and secure payment solutions.</p>
+
+    <a class="btn" href="#">Hire Me</a>
+  </div>
+
+  <div class="hero-img">
+    <img src="{% static 'images/profile.jpg' %}" alt="Robel Hossain">
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services">
+
+
+<!-- Left Cards -->
+<div>
+<div class="service-box">
+<h3>Experience</h3>
+<p>
+<strong>Upay Software</strong><br>
+Software Engineer<br>
+<small>21 May 2024 – 24 March 2025</small>
+</p>
+<p style="margin-top:10px;">
+<strong>UCB Bank</strong><br>
+Officer<br>
+<small>25 March 2025 – Present</small>
+</p>
+</div>
+
+
+<div class="service-box">
+<h3>Skills</h3>
+<p>
+Python, Django REST Framework, Golang, Redis,<br>
+MFS, Microservices, Payment Gateway,<br>
+Customer Authentication & Management Service
+</p>
+</div>
+
+
+<div class="service-box">
+<h3>Design</h3>
+<p>Modern, clean and user‑friendly interface design</p>
+</div>
+</div>
+
+
+<!-- Right Content -->
+<div class="service-title">
+<h2>My Awesome <span>Services</span></h2>
+<p>Lorem ipsum dummy text are usually use in print and website industry.</p>
+<br>
+<a class="btn" href="#">Hire CV</a>
+</div>
+
+
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<p>© <span id="year"></span> Copyright by <strong>Robel Hossain</strong>. All Rights Reserved.</p>
+</footer>
+
+
+<script>
+  function toggleTheme(){
+    document.body.classList.toggle('dark');
+    const btn = document.querySelector('.theme-toggle');
+    btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  }
+</script>
+
+</body>
+</html>
