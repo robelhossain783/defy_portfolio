@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Services | Robel Hossain</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --primary-soft:#eef2ff;
+  --bg:#ffffff;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:rgba(0,0,0,0.08);
+  --shadow:0 15px 40px rgba(0,0,0,0.06);
+}
+
+body.dark{
+  --primary:#6366f1;
+  --primary-soft:rgba(99,102,241,0.15);
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --border:rgba(255,255,255,0.12);
+  --shadow:0 18px 45px rgba(0,0,0,0.45);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
+
+/* Header */
+header{
+  max-width:1200px;
+  margin:auto;
+  padding:20px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+header h2{
+  font-size:22px;
+  font-weight:700;
+}
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  margin-right:20px;
+  font-weight:500;
+}
+.theme-toggle{
+  border:none;
+  cursor:pointer;
+  background:var(--primary);
+  color:#fff;
+  padding:8px 14px;
+  border-radius:10px;
+}
+
+/* Main Section */
+.container{
+  max-width:1100px;
+  margin:60px auto;
+  padding:0 20px;
+  text-align:center;
+}
+
+.container h1{
+  font-size:36px;
+  margin-bottom:15px;
+}
+.container p.subtitle{
+  color:var(--muted);
+  font-size:16px;
+  margin-bottom:50px;
+}
+
+/* Service Cards Grid */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.service-card{
+  background:var(--card);
+  padding:30px 25px;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+  transition:.3s;
+  text-align:left;
+}
+
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 25px 50px rgba(0,0,0,0.1);
+}
+
+.service-card h3{
+  font-size:20px;
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+.service-card p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:14px;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:25px 10px;
+  color:var(--muted);
+  font-size:14px;
+  margin-top:60px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .container h1{
+    font-size:28px;
+  }
+}
+</style>
+</head>
+<body>
+{% load static %}
+<header>
+  <h2>RH</h2>
+  <nav>
+    <a href="{% url 'my_home' %}">Home</a>
+    <a href="{% url 'contact' %}">Contact</a>
+    <button class="theme-toggle" onclick="">🌙</button>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>My Services</h1>
+  <p class="subtitle">I provide professional backend and financial system solutions for enterprise-grade applications.</p>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <h3>Backend System Development</h3>
+      <p>Designing and developing scalable backend systems to ensure high performance and reliability for enterprise platforms.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Mobile Financial Services (MFS)</h3>
+      <p>Developing Mobile Financial Services solutions including fund transfers, customer authentication, and secure payment processing.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Microservice Architecture</h3>
+      <p>Building and maintaining microservice-based architectures for modularity, scalability, and efficient maintenance of complex systems.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>API Development & Integration</h3>
+      <p>Developing RESTful APIs and integrating third-party systems for seamless communication across services and platforms.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Customer Management Services</h3>
+      <p>Implementing secure customer authentication, authorization flows, and comprehensive customer management services.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Project Experience</h3>
+      <p>Worked on high-profile projects including UCB Bank, Subone, Super App, and Upay services, contributing to robust backend solutions and optimized transaction workflows.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © <span id="year"></span> Robel Hossain. All Rights Reserved.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function toggleTheme(){
+    document.body.classList.toggle('dark');
+    const btn = document.querySelector('.theme-toggle');
+    btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  }
+
+  if(localStorage.getItem("theme")==="dark"){
+    document.body.classList.add('dark');
+    document.querySelector('.theme-toggle').textContent='☀️';
+  }
+</script>
+
+</body>
+</html>
