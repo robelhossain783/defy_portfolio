@@ -32,6 +32,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -110,13 +111,31 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-from pathlib import Path
-BASE_DIR = Path(__file__).resolve().parent.parent
+# STATIC_URL = '/static/'
+#
+# # Where collectstatic will put all static files
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # single path, not a list
+#
+# # Additional locations of static files
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'portfolio', 'static')
+# ]
+# # STATIC_URL = '/static/'
+# # # STATIC_ROOT = BASE_DIR / 'staticfiles'
+# #
+# # STATICFILES_DIRS = [BASE_DIR / 'static']
+# STATIC_DIRS = [os.path.join(BASE_DIR, 'portfolio/static')]
+# # STATIC_ROOT = [os.path.join(BASE_DIR, 'staticfiles')]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# Where collectstatic will collect all files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ✅ SINGLE path, NOT a list
+
+# Extra static file directories (optional)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'portfolio', 'static')  # ✅ list of paths
+]
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 
