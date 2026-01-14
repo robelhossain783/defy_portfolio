@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "defy_portfolio/wsgi.py",
@@ -6,6 +7,10 @@
     }
   ],
   "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "defy_portfolio/wsgi.py"
