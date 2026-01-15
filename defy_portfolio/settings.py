@@ -15,18 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '0h+zb5(tu%&uv0!#u(vl7r04jxu!2e3ihej01wkmvfg**8^2pz'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = [
-    'yourusername.pythonanywhere.com'
-]
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     'https://yourusername.pythonanywhere.com',
 ]
@@ -52,7 +43,7 @@ INSTALLED_APPS = APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -112,37 +103,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# STATIC_URL = '/static/'
-#
-# # Where collectstatic will put all static files
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # single path, not a list
-#
-# # Additional locations of static files
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'portfolio', 'static')
-# ]
-# # STATIC_URL = '/static/'
-# # # STATIC_ROOT = BASE_DIR / 'staticfiles'
-# #
-# # STATICFILES_DIRS = [BASE_DIR / 'static']
-# STATIC_DIRS = [os.path.join(BASE_DIR, 'portfolio/static')]
-# # STATIC_ROOT = [os.path.join(BASE_DIR, 'staticfiles')]
-
+# -----------------------------
+# STATIC FILES
+# -----------------------------
 STATIC_URL = '/static/'
 
-# Where collectstatic will collect all files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ✅ SINGLE path, NOT a list
+# Where collectstatic will collect all static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # for production
 
-# Extra static file directories (optional)
+# Extra static files dirs (development)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'portfolio', 'static')  # ✅ list of paths
+    os.path.join(BASE_DIR, 'portfolio', 'static'),  # your app static folder
 ]
+
+
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -154,7 +129,4 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
